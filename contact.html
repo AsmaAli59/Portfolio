@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="stylesss.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="contact-form" method="POST" onsubmit="sendEmail(); reset(); return false"name;>
+            <h3>Get in Touch</h3>
+            <label for="contact-form-name">Name:</label>
+            <input class="form-input" placeholder="your name" type="text" id="name" required>
+            <label for="contact-form-email">Email:</label>
+            <input class="form-input" placeholder="email id" type="text" id="email" required>
+            <label for="contact-form-phone">Phone:</label>
+            <input class="form-input" placeholder="Phone no" type="text" id="phone" required>
+            <label for="contact-form-message">Message:</label>
+            <textarea id="message" row=""4 name="message" placeholder="How can i help you" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="popup-form-container" style="display:none;">
+        <!-- Your form HTMLcode from the previous section here -->
+    </div>
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function  sendEmail(){
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "iasmiiali123@gmail.com",
+    Password : "password",
+    To : 'iasmiiali123@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "New contact form enquiry",
+    Body : " Name:" +document.getElementById("name").value +"<br> Email:" +document.getElementById("email").value
+    +"<br> Phone no:" +document.getElementById("phone").value+ "<br> Messages:" +document.getElementById("message").value
+}).then(
+  message => alert("messages sent successfully")
+);
+        }
+    </script>
+</body>
+
+</html>
